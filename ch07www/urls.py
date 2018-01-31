@@ -18,5 +18,6 @@ from mysite import views
 
 urlpatterns = [
     url(r'^$',views.index),
+    url(r'^detail/(\d+)$',views.detail,name='detail-url'),
     url(r'^admin/', include(admin.site.urls)),
 ]

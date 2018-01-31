@@ -22,18 +22,18 @@ class PModel(models.Model):
 
 
 class Product(models.Model):
-    pmodel = models.ForeignKey(PModel, on_delete=models.CASCADE)
-    nickname = models.CharField(max_length=15, default='超值二手机')
+    pmodel = models.ForeignKey(PModel, on_delete=models.CASCADE,verbose_name='型号')
+    nickname = models.CharField(max_length=15, default='超值二手机',verbose_name='摘要')
     description = models.TextField(default='暂无说明')
-    year = models.PositiveIntegerField(default=2016)
-    price = models.PositiveIntegerField(default=0)
+    year = models.PositiveIntegerField(default=2016,verbose_name='出厂年份')
+    price = models.PositiveIntegerField(default=0,verbose_name='价格')
 
     def __unicode__(self):
         return self.nickname
 
 
 class PPhoto(models.Model):
-    Product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     description = models.CharField(max_length=20, default='产品照片')
     url = models.URLField(default='http://i.imgur.com/Z230eeq.png')
 
